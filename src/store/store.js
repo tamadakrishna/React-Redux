@@ -1,8 +1,17 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterSlice from '../slices/counterSlice'
+import { createStore } from 'redux'
 
-export default configureStore({
-  reducer: {
-    counter: counterSlice,
-  },
-})
+function counterReducer(state = { value: 0 }, action) {
+  switch (action.type) {
+    case 'increment':
+      return { value: state.value + 1 }
+    case 'decrement':
+      return { value: state.value - 1 }
+    default:
+      return state
+  }
+}
+
+let store = createStore(counterReducer)
+
+
+export default store;
