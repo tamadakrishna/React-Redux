@@ -1,4 +1,15 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+
+
+const loggerMiddleware = store => next => action => {
+  console.log('logger middleware')
+  console.log('dispatching', action)
+  let result = next(action)
+  console.log('next state', store.getState())
+  return result
+}
+
+const CustomMiddleware = applyMiddleware(loggerMiddleware)
 
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {
@@ -11,7 +22,7 @@ function counterReducer(state = { value: 0 }, action) {
   }
 }
 
-let store = createStore(counterReducer)
+let store = createStore(counterReducer,CustomMiddleware)
 
 
 export default store;
