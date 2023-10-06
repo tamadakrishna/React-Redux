@@ -12,6 +12,6 @@ const loggerMiddleware = store => next => action => {
 export default configureStore({
   reducer: {
     counter: counterSlice,
-    middleware:(getDefaultMiddleware)=>getDefaultMiddleware.concat(loggerMiddleware)
-  },
+ },
+ middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(loggerMiddleware),
 })
