@@ -1,4 +1,5 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {
@@ -11,7 +12,7 @@ function counterReducer(state = { value: 0 }, action) {
   }
 }
 
-let store = createStore(counterReducer)
+let store = createStore(counterReducer,applyMiddleware(thunk))
 
 
 export default store;
