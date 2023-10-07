@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import store from '../store/store'
+import store,{Increment} from '../store/store'
 
 const Counter = ()=> {
 
@@ -21,7 +21,7 @@ const Counter = ()=> {
     <div>
         <div><h1>{state}</h1></div>
         <div> 
-            <button onClick={()=>{store.dispatch({ type: 'increment' })}}>increment</button>
+            <button onClick={()=>{store.dispatch(Increment)}}>increment</button>
             <button onClick={()=>{store.dispatch({ type: 'decrement' })}}>Decrement</button>
         </div>
     </div>
