@@ -5,7 +5,7 @@ export const doIncrement = createAsyncThunk('increment', async (userId, { dispat
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       dispatch(increment());
-      resolve(); // Indicate that the operation is successful
+      // resolve(); // Indicate that the operation is successful
     }, 4000);
   });
 })
