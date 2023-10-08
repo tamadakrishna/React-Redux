@@ -1,7 +1,12 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-
+export const Increment = dispatch =>{
+  console.log('thunk started')
+  return setTimeout(()=>{
+    dispatch({ type: 'increment' })
+  },4000)
+}
 
 function counterReducer(state = { value: 0 }, action) {
   switch (action.type) {
@@ -15,13 +20,6 @@ function counterReducer(state = { value: 0 }, action) {
 }
 
 let store = createStore(counterReducer,applyMiddleware(thunk))
-
-export const Increment = dispatch =>{
-  console.log('thunk started')
-  return setTimeout(()=>{
-    dispatch({ type: 'increment' })
-  },4000)
-}
 
 
 export default store;
